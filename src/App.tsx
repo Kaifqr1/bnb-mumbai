@@ -226,7 +226,6 @@ function App() {
         </div>
         <div className="hero-visual">
           <div className="hero-image hero-image-main"><img src={images.lambBurger} alt="Signature lamb burger with fries" loading="eager" fetchPriority="high" decoding="async" /></div>
-          <div className="hero-image hero-image-side"><img src={images.fishPopcorn} alt="Crispy fish popcorn with dip" loading="eager" decoding="async" /></div>
           <div className="hero-sticker">B&B<br /><small>BURGER<br />AND BEYOND</small></div>
           <div className="hero-note">Signature<br /><strong>lamb burger</strong></div>
         </div>
