@@ -10,7 +10,6 @@ import {
   Search,
   ShoppingBag,
   Sparkles,
-  Utensils,
   X,
 } from "lucide-react";
 
@@ -18,10 +17,18 @@ const WHATSAPP_NUMBER = "917039081439";
 const logo = "/brand/bnb-logo.jpg";
 
 const images = {
-  lambBurger: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1200&q=85",
+  lambBurger: "/menu/lamb-burger.jpg",
   fishPopcorn: "/menu/fish-popcorn.jpg",
-  chickenPopcorn: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=1200&q=85",
-  pizza: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=1200&q=85",
+  chickenPopcorn: "/menu/crispy-chicken.jpg",
+  pizza: "/menu/pizza.jpg",
+  vegBurger: "/menu/veg-burger.jpg",
+  chickenBurger: "/menu/chicken-burger.jpg",
+  fries: "/menu/fries.jpg",
+  sandwich: "/menu/sandwich.jpg",
+  mocktail: "/menu/mocktail.jpg",
+  shake: "/menu/shake.jpg",
+  brownie: "/menu/brownie.jpg",
+  nachos: "/menu/nachos.jpg",
 };
 
 type MenuItem = {
@@ -94,6 +101,22 @@ const menu: MenuItem[] = [
 ];
 
 const formatPrice = (price: number | null) => (price === null ? "Ask us" : `₹${price}`);
+
+function menuImage(item: MenuItem) {
+  if (item.image) return item.image;
+  if (item.category === "B&B Veg Burger") return images.vegBurger;
+  if (item.category === "B&B Chicken Burger") return images.chickenBurger;
+  if (item.category === "Chicken & fish") return images.chickenPopcorn;
+  if (item.id === "cheesy-mexican-nachos") return images.nachos;
+  if (item.category === "Yummy fries") return images.fries;
+  if (item.category === "Italian panini sandwiches") return images.sandwich;
+  if (item.category === "Pizza") return images.pizza;
+  if (item.category === "Mocktail, cold coffee, milk shake") {
+    return item.name.toLowerCase().includes("shake") || item.name.toLowerCase().includes("coffee") ? images.shake : images.mocktail;
+  }
+  if (item.category === "Signature desserts") return images.brownie;
+  return images.lambBurger;
+}
 
 function buildOrderMessage(items: MenuItem[], quantities: Record<string, number>) {
   const selected = items.filter((item) => quantities[item.id] > 0);
@@ -185,7 +208,7 @@ function App() {
       <section className="menu-section" id="menu">
         <div className="menu-head"><div><p className="eyebrow">Order what you love</p><h2>The menu</h2></div><p>Everything on the B&B menu, from quick bites to proper meal moments.</p></div>
         <div className="menu-toolbar"><div className="search-box"><Search size={17} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search burgers, pizza, shakes..." aria-label="Search menu" /></div><div className="category-scroll" role="tablist" aria-label="Menu categories">{categories.map((category) => <button key={category} className={activeCategory === category ? "active" : ""} onClick={() => setActiveCategory(category)} role="tab" aria-selected={activeCategory === category}>{category}</button>)}</div></div>
-        <div className="menu-grid">{filteredMenu.map((item) => <article className="menu-card" key={item.id}>{item.image && <img src={item.image} alt={item.name} />}{!item.image && <div className="menu-art"><Utensils size={20} /></div>}<div className="menu-card-body"><div className="menu-card-top"><h3>{item.name}</h3><strong>{formatPrice(item.price)}</strong></div><p>{item.description}</p><div className="menu-card-bottom"><div className="badges">{item.veg && <span className="badge veg"><i /> Veg</span>}{!item.veg && <span className="badge nonveg"><i /> Non-veg</span>}{item.spicy && <span className="badge spicy">Spicy</span>}</div>{quantities[item.id] ? <div className="stepper"><button onClick={() => changeQuantity(item, -1)} aria-label={`Remove one ${item.name}`}><Minus size={14} /></button><b>{quantities[item.id]}</b><button onClick={() => changeQuantity(item, 1)} aria-label={`Add one ${item.name}`}><Plus size={14} /></button></div> : <button className="add-button" onClick={() => changeQuantity(item, 1)}>Add <Plus size={15} /></button>}</div></div></article>)}</div>
+        <div className="menu-grid">{filteredMenu.map((item) => <article className="menu-card" key={item.id}><img src={menuImage(item)} alt={item.name} loading="lazy" /><div className="menu-card-body"><div className="menu-card-top"><h3>{item.name}</h3><strong>{formatPrice(item.price)}</strong></div><p>{item.description}</p><div className="menu-card-bottom"><div className="badges">{item.veg && <span className="badge veg"><i /> Veg</span>}{!item.veg && <span className="badge nonveg"><i /> Non-veg</span>}{item.spicy && <span className="badge spicy">Spicy</span>}</div>{quantities[item.id] ? <div className="stepper"><button onClick={() => changeQuantity(item, -1)} aria-label={`Remove one ${item.name}`}><Minus size={14} /></button><b>{quantities[item.id]}</b><button onClick={() => changeQuantity(item, 1)} aria-label={`Add one ${item.name}`}><Plus size={14} /></button></div> : <button className="add-button" onClick={() => changeQuantity(item, 1)}>Add <Plus size={15} /></button>}</div></div></article>)}</div>
         {filteredMenu.length === 0 && <div className="empty-state">No dishes found. Try another search or category.</div>}
       </section>
 
@@ -198,5 +221,5 @@ function App() {
   );
 }
 
-export { buildOrderMessage, menu };
+export { buildOrderMessage, menu, menuImage };
 export default App;
