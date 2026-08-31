@@ -21,4 +21,4 @@
 - [ ] Optimize unique menu image delivery for production loading performance.
 - [ ] Add lightweight entrance, hover, filter, and cart animations with reduced-motion support.
 
-- [ ] Urgently commit and push the current image, optimization, and animation work before continuing any asset generation.
+- [x] Urgently commit and push the current image, optimization, and animation work before continuing any asset generation.
