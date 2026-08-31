@@ -15,3 +15,10 @@
 > Owner follow-up: replace `WHATSAPP_NUMBER` in `src/App.tsx` when the restaurant’s final number is available. The current number is the temporary testing number requested.
 
 - [x] Replace missing deployed menu images with dish-relevant bundled assets and verify them on desktop and mobile.
+
+- [ ] Replace repeated category photos with one unique, dish-specific image per menu item and verify zero duplicate image paths.
+
+- [ ] Optimize unique menu image delivery for production loading performance.
+- [ ] Add lightweight entrance, hover, filter, and cart animations with reduced-motion support.
+
+- [ ] Urgently commit and push the current image, optimization, and animation work before continuing any asset generation.

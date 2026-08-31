@@ -18,17 +18,67 @@ const logo = "/brand/bnb-logo.jpg";
 
 const images = {
   lambBurger: "/menu/lamb-burger.jpg",
-  fishPopcorn: "/menu/fish-popcorn.jpg",
-  chickenPopcorn: "/menu/crispy-chicken.jpg",
+  fishPopcorn: "/menu/fish-popcorn-plated.jpg",
+  chickenPopcorn: "/menu/popcorn-chicken.jpg",
   pizza: "/menu/pizza.jpg",
-  vegBurger: "/menu/veg-burger.jpg",
-  chickenBurger: "/menu/chicken-burger.jpg",
-  fries: "/menu/fries.jpg",
-  sandwich: "/menu/sandwich.jpg",
-  mocktail: "/menu/mocktail.jpg",
-  shake: "/menu/shake.jpg",
-  brownie: "/menu/brownie.jpg",
-  nachos: "/menu/nachos.jpg",
+};
+
+const dishImages: Record<string, string> = {
+  "classic-veg": "/menu/classic-veg-burger.jpg",
+  "crunchy-surprise": "/menu/crunchy-surprise-burger.jpg",
+  "peri-peri-twist": "/menu/peri-peri-twist-burger.jpg",
+  "cheesy-delight": "/menu/cheesy-delight-burger.jpg",
+  "spicy-paneer": "/menu/spicy-paneer-burger.jpg",
+  "cheese-burst": "/menu/cheese-burst-veggie-burger.jpg",
+  "classic-chicken": "/menu/classic-chicken-burger.jpg",
+  "peri-peri-chicken": "/menu/peri-peri-chicken-burger.jpg",
+  "original-zinger": "/menu/original-zinger-burger.jpg",
+  "spicy-zinger": "/menu/spicy-zinger-burger.jpg",
+  "cheesy-mustard": "/menu/cheesy-mustard-chicken-burger.jpg",
+  "bbq-jumbo": "/menu/bbq-jumbo-chicken-burger.jpg",
+  "lamb-burger": "/menu/lamb-burger.jpg",
+  "fish-popcorn": "/menu/fish-popcorn-plated.jpg",
+  "popcorn-chicken": "/menu/popcorn-chicken.jpg",
+  "chicken-strips": "/menu/chicken-strips.jpg",
+  "chicken-wings": "/menu/chicken-wings.jpg",
+  "fried-chicken": "/menu/fried-chicken.jpg",
+  "family-bucket": "/menu/family-bucket.jpg",
+  "french-fries": "/menu/french-fries.jpg",
+  "peri-fries": "/menu/peri-peri-fries.jpg",
+  "cheesy-fries": "/menu/cheesy-fries.jpg",
+  "loaded-chicken-fries": "/menu/loaded-chicken-fries.jpg",
+  "cheesy-mexican-nachos": "/menu/cheesy-mexican-nachos-unique.jpg",
+  "corn-cheese-sandwich": "/menu/corn-cheese-sandwich.jpg",
+  "paneer-tikka": "/menu/paneer-tikka-wrap.jpg",
+  "bbq-paneer": "/menu/bbq-paneer-sandwich.jpg",
+  "chicken-salad": "/menu/chicken-salad-sandwich.jpg",
+  "crispy-chicken-sandwich": "/menu/crispy-chicken-wrap.jpg",
+  "bbq-chicken": "/menu/bbq-chicken-wrap.jpg",
+  "cheesy-chicken": "/menu/cheesy-chicken-wrap.jpg",
+  "malai-tikka": "/menu/malai-tikka-wrap.jpg",
+  "italian-mustard": "/menu/italian-mustard-chicken-wrap.jpg",
+  "corn-pizza": "/menu/corn-cheese-pizza.jpg",
+  "jalapeno-pizza": "/menu/corn-jalapeno-pizza.jpg",
+  "cheesy-mushroom": "/menu/cheesy-mushroom-pizza.jpg",
+  "exotic-veg": "/menu/exotic-veg-pizza.jpg",
+  "spicy-paneer-pizza": "/menu/spicy-paneer-pizza.jpg",
+  "bbq-paneer-pizza": "/menu/bbq-paneer-pizza.jpg",
+  "cheesy-chicken-pizza": "/menu/cheesy-chicken-pizza.jpg",
+  "jalapeno-chicken-pizza": "/menu/jalapeno-chicken-pizza.jpg",
+  "peri-chicken-pizza": "/menu/peri-peri-chicken-pizza.jpg",
+  "smokey-bbq-chicken": "/menu/smokey-bbq-chicken-pizza.jpg",
+  "mushroom-pepper": "/menu/mushroom-pepper-chicken-pizza.jpg",
+  "chicken-tikka-pizza": "/menu/chicken-tikka-pizza.jpg",
+  "mint-mojito": "/menu/mint-mojito.jpg",
+  "strawberry-mango": "/menu/strawberry-mango.jpg",
+  "blueberry-mojito": "/menu/blueberry-mojito.jpg",
+  "cold-coffee": "/menu/cold-coffee.jpg",
+  "oreo-shake": "/menu/oreo-choco-shake.jpg",
+  "lotus-shake": "/menu/lotus-biscoff-shake.jpg",
+  "nutella-shake": "/menu/nutella-chocolate-shake.jpg",
+  "brownie": "/menu/nutella-choco-brownie.jpg",
+  "biscoff-brownie": "/menu/lotus-biscoff-brownie.jpg",
+  "pistachio-brownie": "/menu/dubai-pistachio-brownie.jpg",
 };
 
 type MenuItem = {
@@ -103,19 +153,7 @@ const menu: MenuItem[] = [
 const formatPrice = (price: number | null) => (price === null ? "Ask us" : `₹${price}`);
 
 function menuImage(item: MenuItem) {
-  if (item.image) return item.image;
-  if (item.category === "B&B Veg Burger") return images.vegBurger;
-  if (item.category === "B&B Chicken Burger") return images.chickenBurger;
-  if (item.category === "Chicken & fish") return images.chickenPopcorn;
-  if (item.id === "cheesy-mexican-nachos") return images.nachos;
-  if (item.category === "Yummy fries") return images.fries;
-  if (item.category === "Italian panini sandwiches") return images.sandwich;
-  if (item.category === "Pizza") return images.pizza;
-  if (item.category === "Mocktail, cold coffee, milk shake") {
-    return item.name.toLowerCase().includes("shake") || item.name.toLowerCase().includes("coffee") ? images.shake : images.mocktail;
-  }
-  if (item.category === "Signature desserts") return images.brownie;
-  return images.lambBurger;
+  return dishImages[item.id] ?? item.image ?? images.lambBurger;
 }
 
 function buildOrderMessage(items: MenuItem[], quantities: Record<string, number>) {
@@ -187,8 +225,8 @@ function App() {
           <div className="hero-details"><span><Clock3 size={15} /> Free home delivery</span><span><MapPin size={15} /> Mumbai</span></div>
         </div>
         <div className="hero-visual">
-          <div className="hero-image hero-image-main"><img src={images.lambBurger} alt="Signature lamb burger with fries" /></div>
-          <div className="hero-image hero-image-side"><img src={images.fishPopcorn} alt="Crispy fish popcorn with dip" /></div>
+          <div className="hero-image hero-image-main"><img src={images.lambBurger} alt="Signature lamb burger with fries" loading="eager" fetchPriority="high" decoding="async" /></div>
+          <div className="hero-image hero-image-side"><img src={images.fishPopcorn} alt="Crispy fish popcorn with dip" loading="eager" decoding="async" /></div>
           <div className="hero-sticker">B&B<br /><small>BURGER<br />AND BEYOND</small></div>
           <div className="hero-note">Signature<br /><strong>lamb burger</strong></div>
         </div>
@@ -199,16 +237,16 @@ function App() {
       <section className="featured" id="story">
         <div className="section-heading"><p className="eyebrow">The good stuff</p><h2>Made for sharing.<br /><em>Hard to share.</em></h2><p>From a proper lamb burger to golden fish popcorn, B&B is built around comfort food with a little extra energy.</p></div>
         <div className="feature-grid">
-          <article className="feature-card feature-card-dark"><img src={images.fishPopcorn} alt="Crispy fish popcorn" /><div><span>01 / crispy bites</span><h3>Fish popcorn,<br />done right.</h3></div></article>
-          <article className="feature-card feature-card-yellow"><img src={images.pizza} alt="Loaded cheesy chicken pizza" /><div><span>02 / loaded pizza</span><h3>More cheese.<br />More reasons.</h3></div></article>
-          <article className="feature-card feature-card-red"><img src={images.chickenPopcorn} alt="Crispy chicken popcorn" /><div><span>03 / crowd favourite</span><h3>Popcorn chicken<br />for the table.</h3></div></article>
+          <article className="feature-card feature-card-dark"><img src={images.fishPopcorn} alt="Crispy fish popcorn" loading="lazy" decoding="async" /><div><span>01 / crispy bites</span><h3>Fish popcorn,<br />done right.</h3></div></article>
+          <article className="feature-card feature-card-yellow"><img src="/menu/cheesy-chicken-pizza.jpg" alt="Loaded cheesy chicken pizza" loading="lazy" decoding="async" /><div><span>02 / loaded pizza</span><h3>More cheese.<br />More reasons.</h3></div></article>
+          <article className="feature-card feature-card-red"><img src={images.chickenPopcorn} alt="Crispy chicken popcorn" loading="lazy" decoding="async" /><div><span>03 / crowd favourite</span><h3>Popcorn chicken<br />for the table.</h3></div></article>
         </div>
       </section>
 
       <section className="menu-section" id="menu">
         <div className="menu-head"><div><p className="eyebrow">Order what you love</p><h2>The menu</h2></div><p>Everything on the B&B menu, from quick bites to proper meal moments.</p></div>
         <div className="menu-toolbar"><div className="search-box"><Search size={17} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search burgers, pizza, shakes..." aria-label="Search menu" /></div><div className="category-scroll" role="tablist" aria-label="Menu categories">{categories.map((category) => <button key={category} className={activeCategory === category ? "active" : ""} onClick={() => setActiveCategory(category)} role="tab" aria-selected={activeCategory === category}>{category}</button>)}</div></div>
-        <div className="menu-grid">{filteredMenu.map((item) => <article className="menu-card" key={item.id}><img src={menuImage(item)} alt={item.name} loading="lazy" /><div className="menu-card-body"><div className="menu-card-top"><h3>{item.name}</h3><strong>{formatPrice(item.price)}</strong></div><p>{item.description}</p><div className="menu-card-bottom"><div className="badges">{item.veg && <span className="badge veg"><i /> Veg</span>}{!item.veg && <span className="badge nonveg"><i /> Non-veg</span>}{item.spicy && <span className="badge spicy">Spicy</span>}</div>{quantities[item.id] ? <div className="stepper"><button onClick={() => changeQuantity(item, -1)} aria-label={`Remove one ${item.name}`}><Minus size={14} /></button><b>{quantities[item.id]}</b><button onClick={() => changeQuantity(item, 1)} aria-label={`Add one ${item.name}`}><Plus size={14} /></button></div> : <button className="add-button" onClick={() => changeQuantity(item, 1)}>Add <Plus size={15} /></button>}</div></div></article>)}</div>
+        <div className="menu-grid">{filteredMenu.map((item) => <article className="menu-card" key={item.id}><img src={menuImage(item)} alt={item.name} loading="lazy" decoding="async" /><div className="menu-card-body"><div className="menu-card-top"><h3>{item.name}</h3><strong>{formatPrice(item.price)}</strong></div><p>{item.description}</p><div className="menu-card-bottom"><div className="badges">{item.veg && <span className="badge veg"><i /> Veg</span>}{!item.veg && <span className="badge nonveg"><i /> Non-veg</span>}{item.spicy && <span className="badge spicy">Spicy</span>}</div>{quantities[item.id] ? <div className="stepper"><button onClick={() => changeQuantity(item, -1)} aria-label={`Remove one ${item.name}`}><Minus size={14} /></button><b>{quantities[item.id]}</b><button onClick={() => changeQuantity(item, 1)} aria-label={`Add one ${item.name}`}><Plus size={14} /></button></div> : <button className="add-button" onClick={() => changeQuantity(item, 1)}>Add <Plus size={15} /></button>}</div></div></article>)}</div>
         {filteredMenu.length === 0 && <div className="empty-state">No dishes found. Try another search or category.</div>}
       </section>
 
