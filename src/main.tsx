@@ -17,11 +17,13 @@ function MotionShell() {
       const progress = Math.min(1, Math.max(0, scrollY / maxScroll));
       const hero = Math.max(-130, scrollY * -0.16);
       const burger = Math.max(-90, scrollY * -0.08);
+      const mobileBurger = Math.max(-42, scrollY * -0.028);
       const rotate = Math.max(-18, Math.min(18, scrollY * 0.045));
       doc.style.setProperty("--scroll-y", `${scrollY}px`);
       doc.style.setProperty("--scroll-progress", `${progress}`);
       doc.style.setProperty("--hero-shift", `${hero}px`);
       doc.style.setProperty("--burger-shift", `${burger}px`);
+      doc.style.setProperty("--burger-mobile-shift", `${mobileBurger}px`);
       doc.style.setProperty("--burger-rotation", `${rotate}deg`);
       doc.style.setProperty("--three-d-depth", `${Math.min(1, scrollY / Math.max(1, window.innerHeight * 2))}`);
     };
