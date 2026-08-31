@@ -5,6 +5,7 @@ import "aos/dist/aos.css";
 import App from "./App";
 import "./styles.css";
 import "./burger-motion.css";
+import "./premium-motion.css";
 
 AOS.init({ duration: 900, once: true, offset: 80, easing: "ease-out-cubic" });
 
