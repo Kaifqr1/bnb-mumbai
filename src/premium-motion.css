@@ -1,0 +1,51 @@
+/* B&B premium motion redesign — branding remains unchanged */
+:root{--bnb-progress:0}
+@media (prefers-reduced-motion:no-preference){
+  body{overflow-x:hidden}
+  .site-header{animation:bnb-header-in .8s cubic-bezier(.16,1,.3,1) both}
+  .hero{position:relative;isolation:isolate}
+  .hero:before{content:"B&B  •  BURGERS  •  MUMBAI  •  B&B  •  BURGERS  •  MUMBAI  •  ";position:absolute;left:-8%;right:-8%;top:52%;z-index:-1;font:700 clamp(72px,13vw,190px)/.8 'DM Mono',monospace;letter-spacing:-.09em;white-space:nowrap;color:rgba(104,31,37,.055);transform:rotate(-7deg) translateX(calc(var(--scroll-y) * -.12));pointer-events:none}
+  .hero-copy{position:relative;z-index:2}
+  .hero h1{animation:bnb-title-in 1.05s cubic-bezier(.16,1,.3,1) .08s both;transform-origin:left bottom}
+  .hero h1 em{display:inline-block;animation:bnb-emphasis 2.8s ease-in-out 1.1s infinite}
+  .hero-intro,.hero-actions,.hero-details{animation:bnb-rise .8s cubic-bezier(.16,1,.3,1) both}
+  .hero-intro{animation-delay:.22s}.hero-actions{animation-delay:.32s}.hero-details{animation-delay:.42s}
+  .hero-visual{perspective:1000px}
+  .hero-image-main{animation:bnb-card-in 1.05s cubic-bezier(.16,1,.3,1) .16s both;transform:rotate(3deg) translate3d(0,0,0)}
+  .hero-image-main img{animation:bnb-image-drift 7s ease-in-out infinite;will-change:transform}
+  .hero-image-side{animation:bnb-card-in .9s cubic-bezier(.16,1,.3,1) .3s both}
+  .hero-image-side img{transition:transform .8s cubic-bezier(.16,1,.3,1)}
+  .hero-image-side:hover img{transform:scale(1.12) rotate(2deg)}
+  .hero-sticker{animation:bnb-sticker-in .9s cubic-bezier(.16,1,.3,1) .45s both, bnb-sticker-float 4s ease-in-out 1.5s infinite}
+  .hero-note{animation:bnb-note-in .8s cubic-bezier(.16,1,.3,1) .55s both}
+  .ticker{justify-content:flex-start;position:relative}
+  .ticker:after{content:"B&B  •  BIG BITES  •  BURGERS  •  MUMBAI  •  MADE FRESH  •  B&B  •  BIG BITES  •  BURGERS  •  MUMBAI  •  MADE FRESH  •  ";display:block;position:absolute;white-space:nowrap;animation:bnb-marquee 22s linear infinite;font-size:12px}
+  .ticker>*{opacity:0}
+  .section-heading h2,.menu-head h2{animation:bnb-rise .8s cubic-bezier(.16,1,.3,1) both}
+  .feature-card{transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s;will-change:transform}
+  .feature-card:nth-child(1){animation:bnb-rise .8s .05s both}.feature-card:nth-child(2){animation:bnb-rise .8s .14s both}.feature-card:nth-child(3){animation:bnb-rise .8s .23s both}
+  .feature-card:hover{transform:translateY(-10px) rotate(-.6deg);box-shadow:0 28px 55px rgba(36,27,24,.16)}
+  .feature-card:hover img{transform:scale(1.09)}
+  .menu-card{transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s;will-change:transform}
+  .menu-card:hover{transform:translateY(-7px);box-shadow:0 22px 45px rgba(36,27,24,.12);border-color:rgba(231,70,46,.4)}
+  .menu-card>img{transition:transform .65s cubic-bezier(.16,1,.3,1)}
+  .menu-card:hover>img{transform:scale(1.07)}
+  .add-button{transition:transform .25s cubic-bezier(.16,1,.3,1),background .25s}
+  .add-button:hover{transform:scale(1.06)}
+  .visit-card{overflow:hidden}
+  .visit-card:before{content:"🍔";position:absolute;right:19%;top:50%;font-size:clamp(90px,15vw,210px);opacity:.13;transform:translate(50%,-50%) rotate(-12deg);animation:bnb-giant-burger 6s ease-in-out infinite;pointer-events:none}
+  .visit-mark{animation:bnb-sticker-float 4.5s ease-in-out infinite}
+}
+@keyframes bnb-header-in{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:none}}
+@keyframes bnb-title-in{from{opacity:0;transform:translateY(50px) scale(.94);filter:blur(10px)}to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes bnb-rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes bnb-card-in{from{opacity:0;transform:translateY(55px) rotate(9deg) scale(.92)}to{opacity:1;transform:rotate(3deg) scale(1)}}
+@keyframes bnb-sticker-in{from{opacity:0;transform:scale(.45) rotate(-25deg)}to{opacity:1;transform:scale(1) rotate(9deg)}}
+@keyframes bnb-note-in{from{opacity:0;transform:translateY(25px) rotate(-12deg)}to{opacity:1;transform:rotate(-4deg)}}
+@keyframes bnb-image-drift{0%,100%{transform:scale(1.02) translate3d(0,0,0)}50%{transform:scale(1.08) translate3d(-1.5%,1%,0)}}
+@keyframes bnb-sticker-float{0%,100%{transform:rotate(9deg) translateY(0)}50%{transform:rotate(5deg) translateY(-10px)}}
+@keyframes bnb-emphasis{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-4px) rotate(-2deg)}}
+@keyframes bnb-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes bnb-giant-burger{0%,100%{transform:translate(50%,-50%) rotate(-12deg) scale(1)}50%{transform:translate(50%,-54%) rotate(5deg) scale(1.08)}}
+@media(max-width:560px){.hero:before{top:47%;font-size:72px}.hero h1{font-size:67px}.visit-card:before{right:20%;top:72%;font-size:100px}.ticker:after{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.hero:before{display:none}.ticker:after{display:none}}
