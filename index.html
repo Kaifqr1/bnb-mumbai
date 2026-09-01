@@ -3,17 +3,60 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5c84c" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://bnb-mumbai.vercel.app/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <meta name="theme-color" content="#f5c84c" />
-    <meta name="description" content="B&B Burger and Beyond — burgers, pizza, chicken, fish popcorn, shakes, and more with free home delivery in Mumbai." />
+    <meta name="description" content="B&B Burger and Beyond — burgers, pizza, chicken, fish, wraps, shakes, desserts and more in Mumbai. View the menu and order online." />
+    <meta name="keywords" content="B&B Burger and Beyond, Burger and Beyond Mumbai, burgers in Mumbai, burgers in Govandi, pizza in Govandi, food delivery Govandi, chicken burgers Mumbai" />
     <meta property="og:title" content="B&B Burger and Beyond | Mumbai" />
-    <meta property="og:description" content="Fresh burgers, loaded pizzas, crispy bites, shakes, and desserts. Order from B&B Burger and Beyond on WhatsApp." />
-    <meta property="og:type" content="website" />
-    <title>B&B Burger and Beyond | Mumbai</title>
+    <meta property="og:description" content="Fresh burgers, loaded pizzas, crispy bites, shakes, wraps and desserts. View the B&B menu and order online." />
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:url" content="https://bnb-mumbai.vercel.app/" />
+    <meta property="og:site_name" content="B&B Burger and Beyond" />
+    <title>B&B Burger and Beyond | Burgers, Pizza & More in Mumbai</title>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "@id": "https://bnb-mumbai.vercel.app/#restaurant",
+        "name": "B&B Burger and Beyond",
+        "url": "https://bnb-mumbai.vercel.app/",
+        "description": "B&B Burger and Beyond serves burgers, pizza, chicken, wraps, fries, shakes, desserts and other fast food in Mumbai.",
+        "servesCuisine": ["Burgers", "Fast Food", "Pizza", "Sandwiches", "Wraps"],
+        "priceRange": "₹₹",
+        "telephone": "+91-7021633034",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Shop No A74, BB Associate with Lazeez Tadka Restaurant, Janta Timber Market, Shivaji Nagar Signal",
+          "addressLocality": "Govandi West, Mumbai",
+          "addressRegion": "Maharashtra",
+          "postalCode": "400043",
+          "addressCountry": "IN"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Mumbai"
+        },
+        "hasMenu": {
+          "@type": "Menu",
+          "name": "B&B Burger and Beyond Menu",
+          "url": "https://bnb-mumbai.vercel.app/"
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <main>
+        <h1>B&B Burger and Beyond — Mumbai</h1>
+        <p>View our burgers, pizza, chicken, wraps, fries, shakes and desserts and order online.</p>
+        <p>JavaScript is required to use the interactive menu and ordering cart.</p>
+      </main>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
