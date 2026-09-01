@@ -43,13 +43,6 @@
 .hero-meta span{color:inherit}
 .hero-art{filter:drop-shadow(0 28px 45px rgba(0,0,0,.5))}
 
-/* Header B&B branding — match the yellow theme */
-.pro-brand span,
-.pro-brand b{
-  color:#ffd43b !important;
-  text-shadow:0 0 12px rgba(255,212,59,.22);
-}
-
 /* B&B badge: neon black instead of maroon */
 .hero-stamp{
   background:#050505;
@@ -69,6 +62,6 @@
 
 @media (max-width:800px){
   .pro-hero::before{background-position:center center;opacity:.60;filter:saturate(.9) contrast(.98) brightness(.92)}
-  .pro-hero::after{background:linear-gradient(180deg,rgba(0,0,0,.48),rgba(0,0,0,.68))}
+  .pro-hero::after{background:linear-gradient(180deg,rgba(0,0,0,.48),rgba(5,5,5,.68))}
   .hero-stamp{box-shadow:0 0 0 3px rgba(5,5,5,.3),0 0 20px rgba(255,212,59,.18),0 12px 26px rgba(0,0,0,.55)}
 }
