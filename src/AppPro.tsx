@@ -1,3 +1,4 @@
+import "./tablet-fix.css";
 import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, Clock3, MapPin, Minus, Plus, Search, ShoppingBag, Sparkles, X } from "lucide-react";
 import { categories, menu, type MenuItem } from "./menu-data";
