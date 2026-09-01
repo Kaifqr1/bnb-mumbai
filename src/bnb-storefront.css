@@ -25,7 +25,7 @@
   font-size: 0;
   line-height: 1;
   letter-spacing: 0;
-  color: var(--maroon);
+  color: #F7C948;
   margin-bottom: 30px;
 }
 
@@ -34,7 +34,7 @@
   display: block;
   font: 700 clamp(72px, 9vw, 128px)/.78 'Playfair Display', Georgia, serif;
   letter-spacing: -.075em;
-  color: var(--maroon);
+  color: #F7C948;
   text-shadow: 0 2px 20px rgba(251,245,233,.35);
 }
 
