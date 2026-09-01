@@ -1,77 +1,22 @@
 import { StrictMode, useEffect } from "react";
 import { createRoot } from "react-dom/client";
-import App, { menu } from "./App";
+import App from "./App";
 import "./styles.css";
 import "./burger-motion.css";
 import "./premium-motion.css";
 
-const restaurantId = "https://bnb-mumbai.vercel.app/#restaurant";
-const siteUrl = "https://bnb-mumbai.vercel.app/";
-
-const structuredMenu = {
-  "@type": "Menu",
-  "@id": `${siteUrl}#menu`,
-  name: "B&B Burger and Beyond Menu",
-  url: siteUrl,
-  inLanguage: "en-IN",
-  hasMenuSection: Array.from(new Set(menu.map((item) => item.category))).map((category) => ({
-    "@type": "MenuSection",
-    name: category,
-    hasMenuItem: menu
-      .filter((item) => item.category === category)
-      .map((item) => ({
-        "@type": "MenuItem",
-        "@id": `${siteUrl}#menu-${item.id}`,
-        name: item.name,
-        description: item.description,
-        ...(item.image ? { image: `${siteUrl}${item.image}` } : {}),
-        ...(item.price !== null
-          ? {
-              offers: {
-                "@type": "Offer",
-                price: item.price.toFixed(2),
-                priceCurrency: "INR",
-                availability: "https://schema.org/InStock",
-                url: siteUrl,
-              },
-            }
-          : {}),
-      })),
-  })),
+const imageFallback = (alt: string) => {
+  const text = alt.toLowerCase();
+  if (text.includes("pizza")) return "/menu/pizza.jpg";
+  if (text.includes("fries") || text.includes("nachos")) return text.includes("nachos") ? "/menu/nachos.jpg" : "/menu/fries.jpg";
+  if (text.includes("sandwich") || text.includes("wrap") || text.includes("panini")) return "/menu/sandwich.jpg";
+  if (text.includes("shake") || text.includes("coffee") || text.includes("mojito") || text.includes("mango") || text.includes("mocktail")) return text.includes("shake") ? "/menu/shake.jpg" : "/menu/mocktail.jpg";
+  if (text.includes("brownie") || text.includes("dessert")) return "/menu/brownie.jpg";
+  if (text.includes("fish")) return "/menu/fish-popcorn.jpg";
+  if (text.includes("chicken")) return "/menu/crispy-chicken.jpg";
+  if (text.includes("burger") || text.includes("paneer")) return text.includes("chicken") ? "/menu/chicken-burger.jpg" : "/menu/veg-burger.jpg";
+  return "/menu/veg-burger.jpg";
 };
-
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "Restaurant",
-  "@id": restaurantId,
-  name: "B&B Burger and Beyond",
-  url: siteUrl,
-  description:
-    "B&B Burger and Beyond serves burgers, pizza, chicken, wraps, fries, shakes, desserts and other fast food in Mumbai.",
-  servesCuisine: ["Burgers", "Fast Food", "Pizza", "Sandwiches", "Wraps"],
-  priceRange: "₹₹",
-  telephone: "+91-7021633034",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress:
-      "Shop No A74, BB Associate with Lazeez Tadka Restaurant, Janta Timber Market, Shivaji Nagar Signal",
-    addressLocality: "Govandi West, Mumbai",
-    addressRegion: "Maharashtra",
-    postalCode: "400043",
-    addressCountry: "IN",
-  },
-  areaServed: { "@type": "City", name: "Mumbai" },
-  hasMenu: structuredMenu,
-};
-
-function StructuredData() {
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-    />
-  );
-}
 
 function MotionShell() {
   useEffect(() => {
@@ -99,7 +44,20 @@ function MotionShell() {
     };
   }, []);
 
-  return <><StructuredData /><div className="bnb-floating-burger" aria-hidden="true"><span className="burger-orbit orbit-one" /><span className="burger-orbit orbit-two" /><span className="burger-glow" /><span className="burger-emoji">🍔</span></div><div className="bnb-scroll-progress" aria-hidden="true" /><App /></>;
+  useEffect(() => {
+    const onImageError = (event: Event) => {
+      const image = event.target;
+      if (!(image instanceof HTMLImageElement)) return;
+      if (image.dataset.fallbackApplied === "true") return;
+      image.dataset.fallbackApplied = "true";
+      image.src = imageFallback(image.alt);
+    };
+
+    window.addEventListener("error", onImageError, true);
+    return () => window.removeEventListener("error", onImageError, true);
+  }, []);
+
+  return <><div className="bnb-floating-burger" aria-hidden="true"><span className="burger-orbit orbit-one" /><span className="burger-orbit orbit-two" /><span className="burger-glow" /><span className="burger-emoji">🍔</span></div><div className="bnb-scroll-progress" aria-hidden="true" /><App /></>;
 }
 
 createRoot(document.getElementById("root")!).render(<StrictMode><MotionShell /></StrictMode>);
