@@ -1,0 +1,39 @@
+/* B&B hero background — balanced premium treatment */
+.pro-hero{
+  position:relative;
+  isolation:isolate;
+  color:#fff;
+  background:#241b18;
+}
+.pro-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  background-image:url("https://drive.google.com/thumbnail?id=17D6YcteD7gNEz8B9VflFnYuZbS-HY4Ub&sz=w2000");
+  background-size:cover;
+  background-position:center 38%;
+  background-repeat:no-repeat;
+  opacity:.62;
+  filter:saturate(.88) contrast(.92);
+  transform:scale(1.015);
+}
+.pro-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:linear-gradient(90deg,rgba(20,12,9,.72) 0%,rgba(20,12,9,.48) 48%,rgba(20,12,9,.58) 100%);
+}
+.pro-hero > *{position:relative;z-index:1}
+.hero-copy-pro h1{color:#fff;text-shadow:0 3px 22px rgba(0,0,0,.22)}
+.hero-copy-pro h1 em{color:#f7c948}
+.hero-copy-pro .pro-eyebrow{color:#f7c948}
+.hero-lead{color:rgba(255,255,255,.82)}
+.hero-meta{color:rgba(255,255,255,.78)}
+.hero-meta span{color:inherit}
+.hero-art{filter:drop-shadow(0 28px 45px rgba(0,0,0,.18))}
+@media (max-width:800px){
+  .pro-hero::before{background-position:center center;opacity:.58}
+  .pro-hero::after{background:linear-gradient(180deg,rgba(20,12,9,.54),rgba(20,12,9,.72))}
+}
