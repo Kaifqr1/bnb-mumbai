@@ -82,7 +82,11 @@ body { overflow-x: clip; }
   .hero-tag { left:4%; bottom:5%; padding:10px 13px; font-size:7px; }
   .hero-tag strong { font-size:14px; }
   .hero-dot { transform:scale(.75); }
-  .bnb-floating-burger { display:none !important; }
+  /* Keep the cute floating burger visible on phones as well as desktop. */
+  .bnb-floating-burger { display:grid !important; right:10px; top:104px; width:64px; height:64px; z-index:40; }
+  .burger-emoji { font-size:40px; }
+  .burger-glow { inset:9%; filter:blur(14px); }
+  .burger-orbit { opacity:.75; }
   .category-section,.story-strip,.visit-pro { padding-left:20px; padding-right:20px; }
   .section-intro { display:block; margin-bottom:35px; }
   .section-intro>p { margin-top:20px; }
