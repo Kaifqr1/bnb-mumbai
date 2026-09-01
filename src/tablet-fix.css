@@ -24,7 +24,7 @@
     gap:14px;
   }
   .story-card { height:410px; }
-  .story-card.large { height:470px; }
+  .story-card.large { height:410px; }
   .story-card strong { font-size:22px; }
 
   /* Keep the CTA panel balanced instead of letting the seal dominate. */
