@@ -1,0 +1,80 @@
+/* Responsive alignment fix — keeps the menu and page content inside the viewport on tablets/mobile. */
+html,
+body,
+#root,
+main {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+html,
+body {
+  overflow-x: clip;
+}
+
+.menu-section,
+.featured,
+.visit-section,
+.menu-grid,
+.menu-toolbar,
+.menu-head,
+.section-heading {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.menu-grid {
+  width: 100%;
+}
+
+.menu-card {
+  min-width: 0;
+  width: 100%;
+}
+
+.menu-card h3,
+.menu-card p {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 1000px) {
+  /* The previous 850px breakpoint was too narrow for many mobile/tablet browser viewports. */
+  .menu-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .menu-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .search-box {
+    width: 100%;
+    max-width: none;
+  }
+
+  .category-scroll {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-grid,
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-section,
+  .featured,
+  .visit-section {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .menu-card > img {
+    height: 190px;
+  }
+}
