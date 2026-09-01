@@ -1,0 +1,106 @@
+/* B&B Home hero: premium background + motion layer */
+.pro-hero{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:var(--cream);
+}
+
+.pro-hero::before{
+  content:"";
+  position:absolute;
+  z-index:-2;
+  inset:-5%;
+  background-image:url("https://drive.google.com/uc?export=view&id=17D6YcteD7gNEz8B9VflFnYuZbS-HY4Ub");
+  background-size:cover;
+  background-position:center;
+  opacity:.22;
+  filter:saturate(.9) contrast(1.02);
+  transform:scale(1.04);
+  transition:transform 1.2s var(--ease), opacity .6s ease;
+}
+
+.pro-hero::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(251,245,233,.96) 0%,rgba(251,245,233,.84) 40%,rgba(251,245,233,.48) 72%,rgba(251,245,233,.72) 100%),
+    linear-gradient(180deg,rgba(251,245,233,.18),rgba(251,245,233,.58));
+  pointer-events:none;
+}
+
+.pro-hero:hover::before{transform:scale(1.08);opacity:.28}
+
+.hero-copy-pro,
+.hero-art{
+  will-change:transform,opacity;
+}
+
+.hero-copy-pro{animation:heroCopyIn .9s var(--ease) both}
+.hero-art{animation:heroArtIn 1.05s .08s var(--ease) both}
+
+.hero-copy-pro h1{transition:transform .55s var(--ease),letter-spacing .55s var(--ease)}
+.hero-copy-pro:hover h1{transform:translateY(-4px);letter-spacing:-.065em}
+
+.hero-photo{transition:transform .7s var(--ease),box-shadow .7s var(--ease),filter .7s ease}
+.hero-art:hover .hero-photo{
+  transform:translate3d(0,-10px,0) rotate(1deg) scale(1.025);
+  box-shadow:0 42px 80px rgba(36,27,24,.22);
+  filter:saturate(1.06);
+}
+
+.hero-stamp{transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.hero-art:hover .hero-stamp{transform:rotate(3deg) scale(1.06)}
+
+.hero-tag{transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.hero-art:hover .hero-tag{transform:rotate(-1deg) translateY(-5px);box-shadow:0 16px 30px rgba(36,27,24,.16)}
+
+.pro-ticker{position:relative}
+.pro-ticker span{transition:transform .35s var(--ease),opacity .35s ease}
+.pro-ticker:hover span{transform:translateY(-2px);opacity:.9}
+
+/* Existing IntersectionObserver adds .is-visible; these rules make the reveal feel smoother. */
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .8s ease,transform .9s var(--ease);
+  transition-delay:var(--delay,0ms);
+}
+.reveal.is-visible{opacity:1;transform:none}
+
+/* Gentle scroll-responsive motion where supported, with a safe fallback above. */
+@supports (animation-timeline: view()){
+  .category-section,.story-strip,.visit-pro{
+    animation:sectionLift linear both;
+    animation-timeline:view();
+    animation-range:entry 0% cover 35%;
+  }
+}
+
+@keyframes heroCopyIn{
+  from{opacity:0;transform:translate3d(-28px,18px,0)}
+  to{opacity:1;transform:none}
+}
+@keyframes heroArtIn{
+  from{opacity:0;transform:translate3d(28px,22px,0) scale(.96)}
+  to{opacity:1;transform:none}
+}
+@keyframes sectionLift{
+  from{transform:translateY(28px);opacity:.82}
+  to{transform:translateY(0);opacity:1}
+}
+
+@media (max-width:800px){
+  .pro-hero::before{background-position:60% center;opacity:.18}
+  .pro-hero::after{background:linear-gradient(180deg,rgba(251,245,233,.9),rgba(251,245,233,.72))}
+  .pro-hero:hover::before{transform:scale(1.04);opacity:.2}
+  .hero-copy-pro:hover h1{transform:none;letter-spacing:-.075em}
+  .hero-art:hover .hero-photo{transform:translate3d(0,-5px,0) rotate(2deg) scale(1.01)}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .pro-hero::before,.hero-copy-pro,.hero-art,.hero-photo,.hero-stamp,.hero-tag,.reveal,.category-section,.story-strip,.visit-pro{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
