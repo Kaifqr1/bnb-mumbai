@@ -1,4 +1,4 @@
-import { StrictMode, useEffect } from "react";
+import { StrictMode, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./AppPro";
 import "./styles.css";
@@ -26,6 +26,8 @@ const imageFallback = (alt: string) => {
 };
 
 function MotionShell() {
+  const [burgerClicked, setBurgerClicked] = useState(false);
+
   useEffect(() => {
     const onImageError = (event: Event) => {
       const image = event.target;
@@ -36,7 +38,30 @@ function MotionShell() {
     window.addEventListener("error", onImageError, true);
     return () => window.removeEventListener("error", onImageError, true);
   }, []);
-  return <><div className="bnb-floating-burger" aria-hidden="true"><span className="burger-orbit orbit-one" /><span className="burger-orbit orbit-two" /><span className="burger-glow" /><span className="burger-emoji">🍔</span></div><div className="bnb-scroll-progress" aria-hidden="true" /><App /></>;
+
+  const handleBurgerClick = () => {
+    setBurgerClicked(false);
+    requestAnimationFrame(() => setBurgerClicked(true));
+    window.setTimeout(() => setBurgerClicked(false), 650);
+    document.getElementById("menu")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  return <>
+    <button
+      className={`bnb-floating-burger ${burgerClicked ? "burger-clicked" : ""}`}
+      onClick={handleBurgerClick}
+      aria-label="Tap the burger to explore the menu"
+      type="button"
+    >
+      <span className="burger-orbit orbit-one" />
+      <span className="burger-orbit orbit-two" />
+      <span className="burger-glow" />
+      <span className="burger-emoji" aria-hidden="true">🍔</span>
+      <span className="burger-click-hint" aria-hidden="true">tap me!</span>
+    </button>
+    <div className="bnb-scroll-progress" aria-hidden="true" />
+    <App />
+  </>;
 }
 
 createRoot(document.getElementById("root")!).render(<StrictMode><MotionShell /></StrictMode>);
