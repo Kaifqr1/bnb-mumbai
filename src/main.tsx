@@ -6,6 +6,7 @@ import "./burger-motion.css";
 import "./premium-motion.css";
 import "./professional.css";
 import "./responsive-fix.css";
+import "./bnb-storefront.css";
 
 const imageFallback = (alt: string) => {
   const text = alt.toLowerCase();
