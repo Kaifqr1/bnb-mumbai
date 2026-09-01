@@ -1,4 +1,4 @@
-/* Responsive alignment fix — keeps the menu and page content inside the viewport on tablets/mobile. */
+/* Responsive layout + hero composition fixes */
 html,
 body,
 #root,
@@ -13,13 +13,329 @@ body {
   overflow-x: clip;
 }
 
+/* Desktop: use the available viewport instead of vertically centering a giant art block. */
+@media (min-width: 1001px) {
+  .pro-hero {
+    width: min(100%, 1600px);
+    min-height: min(760px, calc(100vh - 78px));
+    margin: 0 auto;
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    align-items: center;
+    gap: clamp(30px, 5vw, 90px);
+    padding: clamp(45px, 5vw, 80px) clamp(36px, 6vw, 100px);
+  }
+
+  .hero-copy-pro {
+    max-width: 600px;
+    position: relative;
+    z-index: 5;
+  }
+
+  .hero-copy-pro h1 {
+    font-size: clamp(72px, 7vw, 112px);
+    margin-bottom: 24px;
+  }
+
+  .hero-lead {
+    max-width: 470px;
+    font-size: 15px;
+  }
+
+  .hero-meta {
+    margin-top: 38px;
+  }
+
+  .hero-art {
+    width: 100%;
+    height: clamp(520px, 67vh, 680px);
+    min-height: 0;
+  }
+
+  .hero-photo {
+    right: 10%;
+    top: 5%;
+    width: min(57%, 420px);
+    height: 86%;
+  }
+
+  .hero-ring {
+    right: 1%;
+    top: 1%;
+    width: min(70%, 480px);
+  }
+
+  .hero-stamp {
+    right: 1%;
+    top: 17%;
+  }
+
+  .hero-tag {
+    left: 7%;
+    bottom: 5%;
+  }
+
+  /* Give the category section a strong visual transition rather than dead space. */
+  .category-section {
+    padding-top: clamp(75px, 8vw, 120px);
+  }
+}
+
+/* Tablet */
+@media (min-width: 601px) and (max-width: 1000px) {
+  .pro-hero {
+    min-height: auto;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 24px;
+    padding: 60px 34px 70px;
+  }
+
+  .hero-art {
+    height: 520px;
+    min-height: 0;
+  }
+
+  .hero-photo {
+    right: 7%;
+    width: 62%;
+    height: 82%;
+  }
+
+  .hero-stamp {
+    width: 92px;
+    height: 92px;
+    font-size: 27px;
+  }
+
+  .hero-tag {
+    left: 2%;
+    bottom: 8%;
+  }
+
+  .category-grid,
+  .menu-list-pro {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .menu-nav-pro {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .pro-search {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+/* Phone: stack the hero naturally and remove the huge desktop viewport height. */
+@media (max-width: 600px) {
+  .pro-header {
+    height: 68px;
+    padding: 9px 16px;
+  }
+
+  .pro-brand img {
+    width: 39px;
+    height: 39px;
+  }
+
+  .pro-nav {
+    display: none;
+  }
+
+  .pro-order {
+    padding: 8px 11px;
+  }
+
+  .pro-hero {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 54px 22px 55px;
+  }
+
+  .hero-copy-pro {
+    width: 100%;
+    max-width: 100%;
+    order: 1;
+  }
+
+  .hero-copy-pro h1 {
+    font-size: clamp(52px, 15vw, 72px);
+    line-height: .86;
+    letter-spacing: -.065em;
+    margin-bottom: 22px;
+  }
+
+  .pro-eyebrow {
+    margin-bottom: 16px;
+    font-size: 9px;
+  }
+
+  .hero-lead {
+    max-width: 340px;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .hero-cta {
+    gap: 17px;
+    margin-top: 27px;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta {
+    margin-top: 28px;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .hero-art {
+    order: 2;
+    width: 100%;
+    height: 410px;
+    min-height: 0;
+    margin-top: 8px;
+  }
+
+  .hero-photo {
+    right: 11%;
+    top: 3%;
+    width: 62%;
+    height: 86%;
+    padding: 8px;
+  }
+
+  .hero-ring {
+    right: 0;
+    top: 0;
+    width: 78%;
+  }
+
+  .hero-stamp {
+    width: 76px;
+    height: 76px;
+    right: 0;
+    top: 15%;
+    font-size: 22px;
+  }
+
+  .hero-stamp small {
+    font-size: 6px;
+  }
+
+  .hero-tag {
+    left: 4%;
+    bottom: 5%;
+    padding: 10px 13px;
+    font-size: 7px;
+  }
+
+  .hero-tag strong {
+    font-size: 14px;
+  }
+
+  .hero-dot {
+    transform: scale(.75);
+  }
+
+  /* The emoji floating decoration reads like a placeholder on phones. */
+  .bnb-floating-burger {
+    display: none !important;
+  }
+
+  .category-section,
+  .story-strip,
+  .visit-pro {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .section-intro {
+    display: block;
+    margin-bottom: 35px;
+  }
+
+  .section-intro > p {
+    margin-top: 20px;
+  }
+
+  .category-grid,
+  .story-visual,
+  .menu-list-pro {
+    grid-template-columns: 1fr;
+  }
+
+  .category-image {
+    height: 230px;
+  }
+
+  .story-strip {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .story-card,
+  .story-card.large {
+    height: 360px;
+  }
+
+  .visit-inner {
+    align-items: flex-start;
+    gap: 30px;
+    flex-direction: column;
+  }
+
+  .visit-seal {
+    width: 145px;
+    height: 145px;
+    font-size: 48px;
+  }
+
+  .menu-hero-pro {
+    min-height: 330px;
+    padding: 70px 20px 55px;
+  }
+
+  .menu-hero-number {
+    display: none;
+  }
+
+  .menu-nav-pro {
+    top: 68px;
+    padding: 11px 16px;
+    flex-direction: column;
+  }
+
+  .menu-pills {
+    max-width: 100%;
+    padding-bottom: 2px;
+  }
+
+  .pro-search {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .menu-list-pro {
+    padding: 35px 18px 80px;
+  }
+}
+
+/* Legacy selectors retained so older menu components cannot overflow the viewport. */
 .menu-section,
 .featured,
 .visit-section,
 .menu-grid,
 .menu-toolbar,
 .menu-head,
-.section-heading {
+.section-heading,
+.menu-card,
+.menu-pills,
+.menu-list-pro,
+.category-grid {
   min-width: 0;
   max-width: 100%;
 }
@@ -29,52 +345,12 @@ body {
 }
 
 .menu-card {
-  min-width: 0;
   width: 100%;
 }
 
 .menu-card h3,
-.menu-card p {
+.menu-card p,
+.dish-title h2,
+.dish-body p {
   overflow-wrap: anywhere;
-}
-
-@media (max-width: 1000px) {
-  /* The previous 850px breakpoint was too narrow for many mobile/tablet browser viewports. */
-  .menu-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .menu-toolbar {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .search-box {
-    width: 100%;
-    max-width: none;
-  }
-
-  .category-scroll {
-    min-width: 0;
-    max-width: 100%;
-    width: 100%;
-  }
-}
-
-@media (max-width: 600px) {
-  .menu-grid,
-  .feature-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .menu-section,
-  .featured,
-  .visit-section {
-    padding-left: 18px;
-    padding-right: 18px;
-  }
-
-  .menu-card > img {
-    height: 190px;
-  }
 }
