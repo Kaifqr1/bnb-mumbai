@@ -1,14 +1,26 @@
 :root{--scroll-y:0px;--scroll-progress:0;--hero-shift:0px;--burger-shift:0px;--burger-rotation:0deg}
-.bnb-floating-burger{position:fixed;right:clamp(18px,4vw,58px);top:clamp(92px,18vh,180px);z-index:4;pointer-events:none;display:grid;place-items:center;width:clamp(76px,9vw,112px);height:clamp(76px,9vw,112px);transform:translate3d(0,var(--burger-shift),0) rotate(var(--burger-rotation));animation:bnb-burger-enter 1s cubic-bezier(.16,1,.3,1) .45s both}
-.burger-orbit{position:absolute;border:1px solid rgba(104,31,37,.22);border-radius:50%;animation:bnb-orbit 7s linear infinite}
+.bnb-floating-burger{position:fixed;right:clamp(18px,4vw,58px);top:clamp(92px,18vh,180px);z-index:50;pointer-events:auto;display:grid;place-items:center;width:clamp(76px,9vw,112px);height:clamp(76px,9vw,112px);padding:0;border:0;background:transparent;cursor:pointer;transform:translate3d(0,var(--burger-shift),0) rotate(var(--burger-rotation));animation:bnb-burger-enter 1s cubic-bezier(.16,1,.3,1) .45s both;-webkit-tap-highlight-color:transparent}
+.bnb-floating-burger:focus-visible{outline:2px solid var(--red,#681f25);outline-offset:6px;border-radius:50%}
+.bnb-floating-burger:hover .burger-emoji{filter:drop-shadow(0 18px 24px rgba(36,27,24,.22))}
+.burger-orbit{position:absolute;border:1px solid rgba(104,31,37,.22);border-radius:50%;animation:bnb-orbit 7s linear infinite;pointer-events:none}
 .orbit-one{inset:3%;transform:rotate(25deg) scaleY(.45)}
 .orbit-two{inset:14%;transform:rotate(-35deg) scaleY(.55);animation-duration:5s;animation-direction:reverse}
-.burger-glow{position:absolute;inset:8%;border-radius:50%;background:rgba(247,201,72,.34);filter:blur(18px);animation:bnb-glow 2.8s ease-in-out infinite}
-.burger-emoji{position:relative;display:block;font-size:clamp(42px,6vw,68px);line-height:1;filter:drop-shadow(0 14px 18px rgba(36,27,24,.18));animation:bnb-burger-float 3.8s ease-in-out infinite}
+.burger-glow{position:absolute;inset:8%;border-radius:50%;background:rgba(247,201,72,.34);filter:blur(18px);animation:bnb-glow 2.8s ease-in-out infinite;pointer-events:none}
+.burger-emoji{position:relative;display:block;font-size:clamp(42px,6vw,68px);line-height:1;filter:drop-shadow(0 14px 18px rgba(36,27,24,.18));animation:bnb-burger-float 3.8s ease-in-out infinite;transition:filter .2s ease}
+.burger-click-hint{position:absolute;right:-10px;bottom:-7px;padding:4px 7px;border-radius:999px;background:rgba(255,255,255,.9);box-shadow:0 5px 16px rgba(36,27,24,.12);font:700 9px/1 system-ui,sans-serif;letter-spacing:.03em;color:#681f25;opacity:0;transform:translateY(4px) scale(.9);transition:opacity .2s ease,transform .2s ease;pointer-events:none}
+.bnb-floating-burger:hover .burger-click-hint,.bnb-floating-burger:focus-visible .burger-click-hint{opacity:1;transform:translateY(0) scale(1)}
+.bnb-floating-burger.burger-clicked .burger-emoji{animation:bnb-burger-click .65s cubic-bezier(.2,.9,.25,1) both}
+.bnb-floating-burger.burger-clicked .burger-glow{animation:bnb-click-glow .65s ease-out both}
+.bnb-floating-burger.burger-clicked .orbit-one{animation:bnb-click-orbit .65s ease-out both}
+.bnb-floating-burger.burger-clicked .orbit-two{animation:bnb-click-orbit-reverse .65s ease-out both}
 .bnb-scroll-progress{position:fixed;left:0;top:0;height:3px;width:100%;transform-origin:left center;transform:scaleX(var(--scroll-progress));background:var(--red);z-index:100;pointer-events:none;opacity:.9}
 @keyframes bnb-burger-enter{from{opacity:0;transform:translate3d(70px,-20px,0) scale(.65) rotate(-18deg)}to{opacity:1;transform:translate3d(0,var(--burger-shift),0) rotate(var(--burger-rotation))}}
 @keyframes bnb-burger-float{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-13px) rotate(5deg)}}
+@keyframes bnb-burger-click{0%{transform:translateY(0) scale(1) rotate(0)}22%{transform:translateY(-20px) scale(1.18) rotate(-12deg)}48%{transform:translateY(-30px) scale(1.24) rotate(12deg)}72%{transform:translateY(2px) scale(.92) rotate(-5deg)}100%{transform:translateY(0) scale(1) rotate(0)}}
+@keyframes bnb-click-glow{0%{transform:scale(.85);opacity:.45}45%{transform:scale(1.45);opacity:1}100%{transform:scale(.9);opacity:.45}}
+@keyframes bnb-click-orbit{0%{transform:rotate(25deg) scaleY(.45) scale(1)}100%{transform:rotate(205deg) scaleY(.45) scale(1.35);opacity:.05}}
+@keyframes bnb-click-orbit-reverse{0%{transform:rotate(-35deg) scaleY(.55) scale(1)}100%{transform:rotate(-215deg) scaleY(.55) scale(1.5);opacity:.05}}
 @keyframes bnb-glow{0%,100%{transform:scale(.85);opacity:.45}50%{transform:scale(1.12);opacity:.8}}
 @keyframes bnb-orbit{from{transform:rotate(0deg) scaleY(.45)}to{transform:rotate(360deg) scaleY(.45)}}
-@media(max-width:560px){.bnb-floating-burger{right:12px;top:104px;width:68px;height:68px}.burger-emoji{font-size:42px}.bnb-scroll-progress{height:2px}}
+@media(max-width:560px){.bnb-floating-burger{right:12px;top:104px;width:68px;height:68px}.burger-emoji{font-size:42px}.burger-click-hint{right:-6px;bottom:-9px;font-size:8px}.bnb-scroll-progress{height:2px}}
 @media(prefers-reduced-motion:reduce){.bnb-floating-burger,.burger-emoji,.burger-glow,.burger-orbit{animation:none}.bnb-floating-burger{transform:none}.bnb-scroll-progress{display:none}}
