@@ -4,6 +4,7 @@ import App from "./App";
 import "./styles.css";
 import "./burger-motion.css";
 import "./premium-motion.css";
+import "./responsive-fix.css";
 
 const imageFallback = (alt: string) => {
   const text = alt.toLowerCase();
