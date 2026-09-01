@@ -43,10 +43,11 @@
 .hero-meta span{color:inherit}
 .hero-art{filter:drop-shadow(0 28px 45px rgba(0,0,0,.5))}
 
-/* Main B&B logo text — match the yellow theme */
-.bnb-hero-brand > span{
+/* Main B&B lettermark — match the yellow theme */
+.bnb-hero-brand > span,
+.bnb-hero-brand > small{
   color:#ffd43b !important;
-  text-shadow:0 0 22px rgba(255,212,59,.28);
+  text-shadow:0 0 18px rgba(255,212,59,.24);
 }
 
 /* B&B badge: neon black instead of maroon */
