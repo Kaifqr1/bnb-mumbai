@@ -22,3 +22,11 @@
 - [ ] Add lightweight entrance, hover, filter, and cart animations with reduced-motion support.
 
 - [x] Urgently commit and push the current image, optimization, and animation work before continuing any asset generation.
+
+- [ ] Complete the essential production pass now: bundle unique dish photos locally, keep the optimized animations, validate, and push the final update.
+
+- [ ] Freeze image generation and finish only essential local asset delivery, validation, and GitHub handoff within the remaining session budget.
+
+- [x] Reduce the hero visual treatment to approximately 60% opacity while keeping hero copy and CTAs readable.
+
+- [x] Match the supplied mobile reference with a dark neon-black hero, roughly 60% visual opacity, and yellow B&B branding for visibility.

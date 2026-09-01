@@ -216,6 +216,10 @@ function App() {
       <section className="hero" id="top">
         <div className="hero-copy">
           <p className="eyebrow"><Sparkles size={14} /> Fresh. Loaded. Delivered.</p>
+          <div className="hero-brand-lockup" aria-label="B&B Burger and Beyond">
+            <strong>B&amp;B</strong>
+            <span>BURGER<br />AND BEYOND</span>
+          </div>
           <h1>Good food,<br /><em>big mood.</em></h1>
           <p className="hero-intro">Burgers, pizzas, crispy bites, shakes, and comfort food made for the hungry moments that matter.</p>
           <div className="hero-actions">

@@ -24,3 +24,34 @@
 @keyframes bnb-fade-in{from{opacity:0}to{opacity:1}}
 @keyframes bnb-drawer-in{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:translateX(0)}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.menu-card{content-visibility:visible}}
+
+/* Reference-led hero treatment: dimmed backdrop, neon-black contrast, and a yellow B&B lockup. */
+.hero{background:#090708;isolation:isolate;position:relative}
+.hero::before{background-image:linear-gradient(135deg,rgba(5,5,5,.78),rgba(24,7,10,.66)),url('/brand/bnb-logo.jpg');background-position:center;background-size:cover;content:'';inset:0;opacity:.6;pointer-events:none;position:absolute;z-index:-2}
+.hero::after{background:radial-gradient(circle at 14% 12%,rgba(247,201,72,.16),transparent 25%),radial-gradient(circle at 88% 18%,rgba(231,70,46,.18),transparent 24%),linear-gradient(135deg,rgba(0,0,0,.82),rgba(16,5,8,.64));content:'';inset:0;pointer-events:none;position:absolute;z-index:-1}
+.hero-copy,.hero-visual{position:relative;z-index:1}
+.hero .eyebrow{color:var(--yellow);text-shadow:0 0 14px rgba(247,201,72,.25)}
+.hero-brand-lockup{align-items:flex-end;color:var(--yellow);display:flex;gap:14px;margin:-8px 0 28px;text-shadow:0 0 20px rgba(247,201,72,.24)}
+.hero-brand-lockup strong{font-family:'Playfair Display',serif;font-size:clamp(64px,8vw,112px);letter-spacing:-.11em;line-height:.72}
+.hero-brand-lockup span{border-left:1px solid rgba(247,201,72,.58);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.13em;line-height:1.22;padding-left:13px}
+.hero h1{color:#fff8e9;text-shadow:0 3px 24px rgba(0,0,0,.42)}
+.hero h1 em{color:var(--yellow);text-shadow:0 0 22px rgba(247,201,72,.24)}
+.hero-intro{color:rgba(255,248,233,.86)}
+.hero-details{color:rgba(255,248,233,.72)}
+.hero .text-link{border-color:var(--yellow);color:var(--yellow);text-shadow:0 0 12px rgba(247,201,72,.22)}
+.hero .button-dark{box-shadow:0 0 0 1px rgba(247,201,72,.22),0 10px 28px rgba(0,0,0,.26)}
+.hero-image-main{box-shadow:0 20px 65px rgba(0,0,0,.44)}
+.hero-image-side{box-shadow:0 15px 36px rgba(0,0,0,.38)}
+.hero-note{box-shadow:0 10px 24px rgba(0,0,0,.25)}
+@media(max-width:560px){
+  .hero{background:#070607;min-height:calc(100svh - 68px);padding-top:54px}
+  .hero::before{background-position:center 36%;background-size:cover}
+  .hero-brand-lockup{gap:10px;margin:-4px 0 26px}
+  .hero-brand-lockup strong{font-size:70px}
+  .hero-brand-lockup span{font-size:8px;padding-left:10px}
+  .hero h1{font-size:62px;line-height:.87}
+  .hero-intro{font-size:15px;max-width:360px}
+  .hero .hero-image-main{border-color:var(--yellow);opacity:1}
+  .hero-image-main img{opacity:.97}
+  .hero-image-side{opacity:.88}
+}

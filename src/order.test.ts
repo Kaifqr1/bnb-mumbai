@@ -32,12 +32,12 @@ describe("BNB Mumbai menu", () => {
   });
 
   it("uses a bundled fish photo and keeps the temporary WhatsApp number explicit", () => {
-    expect(menu.find((item) => item.id === "fish-popcorn")?.image).toBe("/menu/fish-popcorn.jpg");
+    expect(menu.find((item) => item.id === "fish-popcorn")?.image).toBe("/menu/fish-popcorn-plated.jpg");
     expect(menu.every((item) => menuImage(item).startsWith("/menu/"))).toBe(true);
-    expect(menuImage(menu.find((item) => item.id === "classic-veg")!)).toBe("/menu/veg-burger.jpg");
-    expect(menuImage(menu.find((item) => item.id === "cheesy-chicken-pizza")!)).toBe("/menu/pizza.jpg");
-    expect(menuImage(menu.find((item) => item.id === "oreo-shake")!)).toBe("/menu/shake.jpg");
-    expect(menuImage(menu.find((item) => item.id === "cheesy-mexican-nachos")!)).toBe("/menu/nachos.jpg");
+    expect(menuImage(menu.find((item) => item.id === "classic-veg")!)).toBe("/menu/classic-veg-burger.jpg");
+    expect(menuImage(menu.find((item) => item.id === "cheesy-chicken-pizza")!)).toBe("/menu/cheesy-chicken-pizza.jpg");
+    expect(menuImage(menu.find((item) => item.id === "oreo-shake")!)).toBe("/menu/oreo-choco-shake.jpg");
+    expect(menuImage(menu.find((item) => item.id === "cheesy-mexican-nachos")!)).toBe("/menu/cheesy-mexican-nachos-unique.jpg");
     const encoded = encodeURIComponent(buildOrderMessage(menu, { "fish-popcorn": 1 }));
     const orderUrl = `https://wa.me/917039081439?text=${encoded}`;
     expect(orderUrl).toMatch(/^https:\/\/wa\.me\/917039081439\?text=/);
