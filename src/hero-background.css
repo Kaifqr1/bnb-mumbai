@@ -14,7 +14,7 @@
   background-size:cover;
   background-position:center 38%;
   background-repeat:no-repeat;
-  opacity:.34;
+  opacity:.60;
   filter:saturate(.82) contrast(.95) brightness(.72);
   transform:scale(1.015);
 }
@@ -61,7 +61,7 @@
 .hero-ring:before,.hero-ring:after,.hero-dot{background:#ff4b35;box-shadow:0 0 10px rgba(255,75,53,.55)}
 
 @media (max-width:800px){
-  .pro-hero::before{background-position:center center;opacity:.3}
+  .pro-hero::before{background-position:center center;opacity:.58}
   .pro-hero::after{background:linear-gradient(180deg,rgba(0,0,0,.72),rgba(0,0,0,.9))}
   .hero-stamp{box-shadow:0 0 0 3px rgba(5,5,5,.3),0 0 20px rgba(255,212,59,.18),0 12px 26px rgba(0,0,0,.55)}
 }
