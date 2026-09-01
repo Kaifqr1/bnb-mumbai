@@ -43,6 +43,13 @@
 .hero-meta span{color:inherit}
 .hero-art{filter:drop-shadow(0 28px 45px rgba(0,0,0,.5))}
 
+/* Header B&B branding — match the yellow theme */
+.pro-brand span,
+.pro-brand b{
+  color:#ffd43b !important;
+  text-shadow:0 0 12px rgba(255,212,59,.22);
+}
+
 /* B&B badge: neon black instead of maroon */
 .hero-stamp{
   background:#050505;
