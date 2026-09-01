@@ -87,3 +87,40 @@ body { overflow-x: clip; }
   .ticker-top .ticker-track { animation-duration:17s; }
   .ticker-top .ticker-copy { gap:16px; padding-right:16px; font-size:9px; letter-spacing:.16em; }
 }
+
+/* Animated category marquee used on the homepage */
+.pro-ticker {
+  position:relative;
+  display:block;
+  width:100%;
+  height:52px;
+  overflow:hidden;
+  white-space:nowrap;
+  background:var(--red);
+  color:#fff8e9;
+  font:500 11px/52px 'DM Mono',monospace;
+  letter-spacing:.2em;
+  text-align:left;
+}
+.pro-ticker > span,
+.pro-ticker > i { display:none; }
+.pro-ticker::before {
+  content:'BURGERS  ✦  PIZZAS  ✦  CRISPY BITES  ✦  SHAKES  ✦  FREE DELIVERY  ✦  BURGERS  ✦  PIZZAS  ✦  CRISPY BITES  ✦  SHAKES  ✦  FREE DELIVERY  ✦  ';
+  display:block;
+  width:max-content;
+  padding-left:36px;
+  animation:bnb-category-marquee 20s linear infinite;
+  will-change:transform;
+}
+.pro-ticker:hover::before { animation-play-state:paused; }
+@keyframes bnb-category-marquee {
+  from { transform:translate3d(0,0,0); }
+  to { transform:translate3d(-50%,0,0); }
+}
+@media (max-width:600px) {
+  .pro-ticker { height:48px; font-size:9px; line-height:48px; letter-spacing:.16em; }
+  .pro-ticker::before { padding-left:20px; animation-duration:14s; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .pro-ticker::before { animation:none; }
+}
