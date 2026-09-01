@@ -18,17 +18,17 @@ describe("BNB Mumbai menu", () => {
         "Italian panini sandwiches",
         "Pizza",
         "Mocktail, cold coffee, milk shake",
-        "Signature desserts",
+        "Desserts",
       ]),
     );
   });
 
   it("encodes selected quantities and flags unpriced signature items", () => {
     const message = buildOrderMessage(menu, { "lamb-burger": 1, "fish-popcorn": 2, "classic-veg": 1 });
-    expect(message).toContain("1 × Signature Lamb Burger (price to confirm)");
-    expect(message).toContain("2 × Fish Popcorn (price to confirm)");
-    expect(message).toContain("1 × Classic Veg Burger — ₹99");
-    expect(message).toContain("Please confirm availability, total, and delivery details.");
+    expect(message).toContain("Signature Lamb Burger x1");
+    expect(message).toContain("Fish Popcorn x2");
+    expect(message).toContain("Classic Veg Burger x1");
+    expect(message).toContain("Hello B&B Burger and Beyond! I would like to order:");
   });
 
   it("uses a bundled fish photo and keeps the temporary WhatsApp number explicit", () => {

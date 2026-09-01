@@ -26,13 +26,17 @@ assets = [
     'nutella-choco-brownie.jpg', 'lotus-biscoff-brownie.jpg', 'dubai-pistachio-brownie.jpg',
 ]
 
+missing = []
 for filename in assets:
     src = source / filename
     if not src.exists():
-        raise FileNotFoundError(src)
+        missing.append(filename)
+        continue
     with Image.open(src) as image:
         image = image.convert('RGB')
         image.thumbnail((900, 700), Image.Resampling.LANCZOS)
         image.save(destination / filename, 'JPEG', quality=78, optimize=True, progressive=True)
 
-print(f'Optimized {len(assets)} unique dish images into {destination}')
+print(f'Optimized {len(assets) - len(missing)} unique dish images into {destination}')
+if missing:
+    print('Still pending:', ', '.join(missing))
