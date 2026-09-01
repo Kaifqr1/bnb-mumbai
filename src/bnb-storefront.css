@@ -1,0 +1,71 @@
+/* Premium B&B storefront hero background + branded headline */
+.pro-hero {
+  position: relative;
+  isolation: isolate;
+  background:
+    linear-gradient(90deg, rgba(251,245,233,.94) 0%, rgba(251,245,233,.78) 38%, rgba(251,245,233,.42) 72%, rgba(36,27,24,.22) 100%),
+    url('https://drive.google.com/uc?export=view&id=17D6YcteD7gNEz8B9VflFnYuZbS-HY4Ub') center 42% / cover no-repeat;
+}
+
+.pro-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(251,245,233,.04), rgba(36,27,24,.18)),
+    radial-gradient(circle at 78% 42%, rgba(247,201,72,.10), transparent 32%);
+}
+
+.pro-hero > * { position: relative; z-index: 1; }
+
+/* Replace “Good food, big mood.” with the B&B brand lockup. */
+.hero-copy-pro h1 {
+  font-size: 0;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--maroon);
+  margin-bottom: 30px;
+}
+
+.hero-copy-pro h1::before {
+  content: 'B&B';
+  display: block;
+  font: 700 clamp(72px, 9vw, 128px)/.78 'Playfair Display', Georgia, serif;
+  letter-spacing: -.075em;
+  color: var(--maroon);
+  text-shadow: 0 2px 20px rgba(251,245,233,.35);
+}
+
+.hero-copy-pro h1::after {
+  content: 'BURGER AND BEYOND';
+  display: block;
+  margin-top: 14px;
+  font: 600 clamp(18px, 2.2vw, 31px)/1 'DM Mono', monospace;
+  letter-spacing: .11em;
+  color: var(--red);
+  text-shadow: 0 1px 10px rgba(251,245,233,.45);
+}
+
+.hero-copy-pro h1 em { display: none; }
+
+@media (max-width: 600px) {
+  .pro-hero {
+    background:
+      linear-gradient(180deg, rgba(251,245,233,.92) 0%, rgba(251,245,233,.72) 48%, rgba(251,245,233,.58) 100%),
+      url('https://drive.google.com/uc?export=view&id=17D6YcteD7gNEz8B9VflFnYuZbS-HY4Ub') center 42% / cover no-repeat;
+  }
+
+  .hero-copy-pro h1 { margin-bottom: 22px; }
+
+  .hero-copy-pro h1::before {
+    font-size: clamp(64px, 18vw, 88px);
+  }
+
+  .hero-copy-pro h1::after {
+    margin-top: 10px;
+    font-size: clamp(13px, 3.5vw, 18px);
+    letter-spacing: .08em;
+  }
+}

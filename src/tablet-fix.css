@@ -1,0 +1,47 @@
+/* B&B tablet / landscape mobile polish */
+@media (min-width:601px) and (max-width:1000px) {
+  /* Keep the floating decorative burger from covering content on tablets. */
+  .bnb-floating-burger { display:none !important; }
+
+  /* Give the category area comfortable gutters at tablet widths. */
+  .category-section { padding:72px 42px 90px; }
+  .category-grid { gap:16px; }
+  .category-image { height:270px; }
+  .category-card-copy { padding:18px 20px; }
+
+  /* The previous 2-column story layout squeezed the three editorial cards.
+     Use the full width for the copy, then give each image a proper column. */
+  .story-strip {
+    grid-template-columns:1fr;
+    gap:44px;
+    padding:78px 42px 92px;
+    align-items:start;
+  }
+  .story-copy > p:not(.pro-eyebrow) { max-width:520px; }
+  .story-visual {
+    width:100%;
+    grid-template-columns:1.2fr 1fr 1fr;
+    gap:14px;
+  }
+  .story-card { height:410px; }
+  .story-card.large { height:410px; }
+  .story-card strong { font-size:22px; }
+
+  /* Keep the CTA panel balanced instead of letting the seal dominate. */
+  .visit-pro { padding:64px 42px 78px; }
+  .visit-inner { padding:48px; gap:40px; }
+  .visit-seal { width:175px; height:175px; font-size:58px; }
+
+  /* Make the animated category marquee a little more prominent on tablet. */
+  .pro-ticker { height:56px; line-height:56px; }
+  .pro-ticker::before { padding-left:42px; animation-duration:18s; }
+}
+
+@media (min-width:601px) and (max-width:760px) {
+  .category-section,
+  .story-strip,
+  .visit-pro { padding-left:28px; padding-right:28px; }
+  .story-visual { grid-template-columns:1fr; }
+  .story-card,
+  .story-card.large { height:390px; }
+}
