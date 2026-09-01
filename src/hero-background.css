@@ -26,14 +26,18 @@
   background:linear-gradient(90deg,rgba(20,12,9,.72) 0%,rgba(20,12,9,.48) 48%,rgba(20,12,9,.58) 100%);
 }
 .pro-hero > *{position:relative;z-index:1}
-.hero-copy-pro h1{color:#fff;text-shadow:0 3px 22px rgba(0,0,0,.22)}
-.hero-copy-pro h1 em{color:#f7c948}
+.hero-copy-pro h1{color:#f7c948;text-shadow:0 3px 22px rgba(0,0,0,.32)}
+.bnb-hero-brand{display:flex;flex-direction:column;gap:8px}
+.bnb-hero-brand > span{font:700 clamp(72px,9vw,128px)/.78 'Playfair Display',serif;letter-spacing:-.08em;color:#f7c948}
+.bnb-hero-brand > small{font:700 clamp(16px,2vw,28px)/1 'DM Sans',sans-serif;letter-spacing:.08em;color:#fff8e9}
 .hero-copy-pro .pro-eyebrow{color:#f7c948}
-.hero-lead{color:rgba(255,255,255,.82)}
-.hero-meta{color:rgba(255,255,255,.78)}
+.hero-lead{color:rgba(255,255,255,.86)}
+.hero-meta{color:rgba(255,255,255,.82)}
 .hero-meta span{color:inherit}
 .hero-art{filter:drop-shadow(0 28px 45px rgba(0,0,0,.18))}
 @media (max-width:800px){
   .pro-hero::before{background-position:center center;opacity:.58}
   .pro-hero::after{background:linear-gradient(180deg,rgba(20,12,9,.54),rgba(20,12,9,.72))}
+  .bnb-hero-brand > span{font-size:clamp(64px,18vw,92px)}
+  .bnb-hero-brand > small{font-size:clamp(13px,4vw,19px);letter-spacing:.06em}
 }
