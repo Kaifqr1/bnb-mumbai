@@ -124,3 +124,9 @@ body { overflow-x: clip; }
 @media (prefers-reduced-motion:reduce) {
   .pro-ticker::before { animation:none; }
 }
+
+/* Keep the fish popcorn editorial card aligned with the other story cards. */
+.story-card.large { height:390px; }
+@media (max-width:600px) {
+  .story-card.large { height:360px; }
+}
