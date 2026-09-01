@@ -10,6 +10,7 @@ import "./bnb-storefront.css";
 import "./home-motion.css";
 import "./cart-premium.css";
 import "./category-pills.css";
+import "./hero-background.css";
 
 const imageFallback = (alt: string) => {
   const text = alt.toLowerCase();
