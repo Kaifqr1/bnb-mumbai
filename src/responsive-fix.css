@@ -32,10 +32,41 @@ body { overflow-x: clip; }
 }
 
 @media (max-width:600px) {
-  .pro-header { height:68px; padding:9px 16px; }
-  .pro-brand img { width:39px; height:39px; }
-  .pro-nav { display:none; }
-  .pro-order { padding:8px 11px; }
+  .pro-header { height:68px; padding:8px 10px; gap:7px; }
+  .pro-brand { flex:0 0 auto; gap:6px; font-size:8px; letter-spacing:.06em; }
+  .pro-brand img { width:36px; height:36px; }
+
+  /* Keep the same navigation links visible on mobile as desktop. */
+  .pro-nav {
+    display:flex;
+    flex:1 1 auto;
+    min-width:0;
+    justify-content:center;
+    align-items:center;
+    gap:0;
+    overflow-x:auto;
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+  }
+  .pro-nav::-webkit-scrollbar { display:none; }
+  .pro-nav a {
+    flex:0 0 auto;
+    padding:7px 6px;
+    font-size:8px;
+    line-height:1;
+    white-space:nowrap;
+  }
+  .pro-nav a:after { bottom:2px; }
+  .pro-order {
+    flex:0 0 auto;
+    padding:8px 9px;
+    gap:5px;
+    font-size:9px;
+  }
+  .pro-order svg { width:14px; height:14px; }
+  .pro-order span { display:none; }
+  .pro-order b { width:16px; height:16px; font-size:8px; }
+
   .pro-hero { min-height:auto; display:flex; flex-direction:column; align-items:stretch; gap:10px; padding:54px 22px 55px; }
   .hero-copy-pro { width:100%; max-width:100%; order:1; }
   .hero-copy-pro h1 { font-size:clamp(52px,15vw,72px); line-height:.86; letter-spacing:-.065em; margin-bottom:22px; }
