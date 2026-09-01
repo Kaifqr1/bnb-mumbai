@@ -7,6 +7,7 @@ import "./premium-motion.css";
 import "./professional.css";
 import "./responsive-fix.css";
 import "./bnb-storefront.css";
+import "./home-motion.css";
 
 const imageFallback = (alt: string) => {
   const text = alt.toLowerCase();
