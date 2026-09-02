@@ -1,5 +1,6 @@
 import { StrictMode, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
+import { Analytics } from "@vercel/analytics/react";
 import App from "./AppPro";
 import "./styles.css";
 import "./burger-motion.css";
@@ -61,6 +62,7 @@ function MotionShell() {
     </button>
     <div className="bnb-scroll-progress" aria-hidden="true" />
     <App />
+    <Analytics />
   </>;
 }
 
