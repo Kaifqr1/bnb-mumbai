@@ -12,7 +12,7 @@ export type MenuItem = {
 const img = (name: string) => `/menu/${name}.jpg`;
 
 export const categories = [
-  { slug: "burgers", label: "Burgers", eyebrow: "Stacked & loaded", description: "Proper B&B burgers, from classic veg favourites to juicy chicken and our signature lamb burger." },
+  { slug: "burgers", label: "Burgers", eyebrow: "Stacked & loaded", description: "Proper Grill & Glow burgers, from classic veg favourites to juicy chicken and our signature lamb burger." },
   { slug: "chicken-fish", label: "Chicken & Fish", eyebrow: "Crispy favourites", description: "Golden sharing bites, wings, strips, fried chicken and fish popcorn made for the table." },
   { slug: "fries", label: "Fries & Sides", eyebrow: "Crunch time", description: "Crispy fries, loaded fries and cheesy sides to make every order better." },
   { slug: "wraps", label: "Wraps & Sandwiches", eyebrow: "Wrapped right", description: "Toasted sandwiches and wraps packed with paneer, chicken, cheese and fresh crunch." },
